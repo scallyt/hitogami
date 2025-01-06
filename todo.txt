@@ -1,0 +1,5 @@
+- Auth implementation -
+- Token system
+- Text bubble tensoreflow
+- trjs
+- i18n

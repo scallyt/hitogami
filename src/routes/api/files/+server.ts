@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit';
 import { db } from '$lib/server/db';
-import { filesTable } from '$lib/server/db/schema';
+import { fileTable } from '$lib/server/db/schema';
 
 export async function POST({ request }: { request: Request }) {
     try {
@@ -9,7 +9,7 @@ export async function POST({ request }: { request: Request }) {
             return json({ error: 'Filename is missing' }, { status: 400 });
         }
 
-        await db.insert(filesTable).values({ filename }).execute();
+        await db.insert(fileTable).values({ filename }).execute();
 
         return json({ success: true, message: 'File uploaded and saved successfully' }, { status: 200 });
     } catch (error) {

@@ -4,9 +4,10 @@ What is hitagomi?
     Hitagomi is a manga translater program you upload your manga image set the targeting language and its translate for you and after that you can download it.
     
 Tech-Stack and tools:
-    [better-auth](https://www.better-auth.com/)
+    [lucia](https://www.better-auth.com/)
     [SvelteKit]()
     [BiomJs](https://biomejs.dev/)
+    [Speech Bubble AI that i am using](https://huggingface.co/kitsumed/yolov8m_seg-speech-bubble)
 
 
 # sv

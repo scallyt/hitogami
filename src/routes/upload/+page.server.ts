@@ -6,6 +6,10 @@ const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/webp', 'image/jpg'];
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB limit
 
 export const actions: Actions = {
+    load: async ({ request }) => {
+        
+    },
+
     upload: async ({ request, fetch }) => {
         try {
             const data = await request.formData();
