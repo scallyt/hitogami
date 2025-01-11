@@ -1,4 +1,4 @@
-- Auth implementation -
+- Auth implementation --- email verification
 - Token system
 - Text bubble tensoreflow
 - trjs
