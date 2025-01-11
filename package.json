@@ -32,12 +32,14 @@
 	},
 	"dependencies": {
 		"@google-cloud/vision": "^4.3.2",
+		"@node-rs/argon2": "^1.1.0",
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
 		"better-sqlite3": "^11.1.2",
 		"deepl-node": "^1.15.0",
 		"drizzle-orm": "^0.33.0",
-		"sharp": "^0.33.5"
+		"sharp": "^0.33.5",
+		"zod": "^3.24.1"
 	}
 }

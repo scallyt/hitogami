@@ -1,10 +1,26 @@
+<script>
+    import Navbar from "$lib/components/Navbar/Navbar.svelte";
+
+    const navItems = [
+        { name: "Kezdőlap", href: "#home" },
+        { name: "Funkciók", href: "#features" },
+        { name: "Demo", href: "#demo" },
+        { name: "Bejelentkezés", href: "/user/login" },
+    ];
+</script>
+
 <main>
     <style>
         :root {
-            --primary: #6d28d9;
-            --secondary: #db2777;
+            --primary: white;
+            --secondary: green;
             --text: #ffffff;
-            --background: #1a1a2e;
+            --background: black;
+            --transition-duration: 1s;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         * {
@@ -30,64 +46,6 @@
                 radial-gradient(circle at 80% 80%, var(--secondary) 0%, transparent 50%);
             opacity: 0.15;
             z-index: -1;
-        }
-
-        nav {
-            padding: 1.5rem;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px rgba(109, 40, 217, 0.5);
-            }
-            to {
-                text-shadow: 0 0 20px rgba(219, 39, 119, 0.8);
-            }
-        }
-
-        .nav-links a {
-            color: var(--text);
-            text-decoration: none;
-            margin-left: 2rem;
-            position: relative;
-            transition: color 0.3s;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
         }
 
         .hero {
@@ -191,12 +149,13 @@
         }
 
         .features {
-            max-width: 1200px;
+            max-width: 1600px;
             margin: 6rem auto;
             padding: 2rem;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            gap: 8rem;
+            margin-bottom: 14rem;
         }
 
         .feature-card {
@@ -206,6 +165,7 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1.7rem;
         }
 
         .feature-card:hover {
@@ -244,42 +204,201 @@
                 display: none;
             }
         }
+
+        .before-after {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .before-after h2 {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .comparison-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .image-container {
+            position: relative;
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            transition: transform 0.3s;
+        }
+
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-label {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+        }
+
+        .arrow-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            color: var(--secondary);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .comparison-container {
+                flex-direction: column;
+            }
+
+            .arrow-container {
+                transform: rotate(90deg);
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .comparison-container {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .image-container {
+            height: 100%;
+            max-height: 500px;
+            width: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+            border-radius: 20px;
+            transition: transform 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-container {
+                height: auto;
+                flex-direction: column;
+            }
+
+            .image-container {
+                height: 40vh;
+                width: 100%;
+            }
+
+            .image-container img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
     </style>
     <div class="background"></div>
     <nav>
-        <div class="nav-content">
-            <div class="logo">MangaTranslator</div>
-            <div class="nav-links">
-                <a href="#features">Funkciók</a>
-                <a href="#about">Rólunk</a>
-                <a href="#login">Bejelentkezés</a>
-            </div>
-        </div>
+        <Navbar navItems={navItems} />
     </nav>
 
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Fordítsd le kedvenc mangáidat másodpercek alatt!</h1>
-            <p>Használd AI-alapú fordító rendszerünket, hogy azonnal hozzáférj kedvenc mangáid tartalmához bármilyen nyelven.</p>
-            <button class="cta-button">Próbáld ki most!</button>
+    <div class="scroll-container">
+        <div id="home" class="hero-section">
+            <div class="hero">
+                <div class="hero-text">
+                    <h1>Fordítsd le kedvenc mangáidat másodpercek alatt!</h1>
+                    <p>Használd AI-alapú fordító rendszerünket, hogy azonnal hozzáférj kedvenc mangáid tartalmához bármilyen nyelven.</p>
+                    <button class="cta-button">Próbáld ki most!</button>
+                </div>
+                <div class="hero-image">
+                    <img src="https://placehold.co/600x400" alt="Manga translation example">
+                </div>
+            </div>
         </div>
-        <div class="hero-image">
-            <img src="/api/placeholder/600/400" alt="Manga translation example">
-        </div>
-    </section>
 
-    <section class="features">
-        <div class="feature-card">
-            <h3>Gyors Fordítás</h3>
-            <p>AI-powered technológiánk másodpercek alatt lefordítja a manga oldalakat, megtartva az eredeti formázást.</p>
+    <div id="features">
+            <h2 class="section-title">Funkciók</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Gyors Fordítás</h3>
+                    <p>AI-powered technológiánk másodpercek alatt lefordítja a manga oldalakat, megtartva az eredeti formázást.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Pontos Eredmény</h3>
+                    <p>Fejlett gépi tanulási modellünk biztosítja a fordítások pontosságát és természetességét.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Egyszerű Használat</h3>
+                    <p>Csak töltsd fel a képet, válaszd ki a célnyelvet, és készen is vagy! Nincs szükség extra beállításokra.</p>
+                </div>
+            </div>
         </div>
-        <div class="feature-card">
-            <h3>Pontos Eredmény</h3>
-            <p>Fejlett gépi tanulási modellünk biztosítja a fordítások pontosságát és természetességét.</p>
+
+    <div id="demo" class="before-after">
+        <h2>Lásd a különbséget!</h2>
+        <div class="comparison-container">
+            <div class="image-container">
+                <img src="/pics/before.jpg" alt="Eredeti manga">
+                <div class="image-label">Eredeti</div>
+            </div>
+            <div class="arrow-container">
+                <div class="arrow">→</div>
+            </div>
+            <div class="image-container">
+                <img src="/pics/after.jpg" alt="Lefordított manga">
+                <div class="image-label">Lefordítva</div>
+            </div>
         </div>
-        <div class="feature-card">
-            <h3>Egyszerű Használat</h3>
-            <p>Csak töltsd fel a képet, válaszd ki a célnyelvet, és készen is vagy! Nincs szükség extra beállításokra.</p>
-        </div>
-    </section>
+    </div>
+
 </main>
