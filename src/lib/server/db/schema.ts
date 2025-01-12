@@ -1,5 +1,5 @@
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
-import { randomUUID } from "node:crypto";
+import { randomUUID, randomBytes } from "node:crypto";
 
 export const fileTable = sqliteTable("file", {
     id: text("id")
@@ -20,6 +20,16 @@ export const fileTable = sqliteTable("file", {
 export const collection = sqliteTable("collection", {
     id: text("id").primaryKey().$defaultFn(() => randomUUID()),
     userId: text("userId").references(() => user.id).notNull()
+})
+
+export const emailVerifyCode = sqliteTable("emailVerifyCode", {
+    id: text("id")
+        .primaryKey()
+        .$defaultFn(() => randomUUID()),
+    userId: text("userId")
+        .references(() => user.id)
+        .notNull(),
+    code: text("code", { length: 6 }).notNull().$defaultFn(() => generateRandomCode(6))
 })
 
 export const user = sqliteTable("user", {
@@ -48,3 +58,18 @@ export const session = sqliteTable("session", {
 export type Session = typeof session.$inferSelect;
 
 export type User = typeof user.$inferSelect;
+
+
+function generateRandomCode(length: number) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let result = '';
+
+    const random = randomBytes(length);
+    for (let i = 0; i < length; i++) {
+        const randomIndex = random[i] % charactersLength;
+        result += characters[randomIndex];
+    }
+
+    return result;
+}
