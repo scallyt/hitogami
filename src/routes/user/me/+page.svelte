@@ -3,7 +3,7 @@
 
     const navItems = [
         { name: "Home", href: "/" },
-        { name: "Register", href: "/user/logout" },
+        { name: "Logout", href: "/user/logout" },
     ];
 </script>
 
@@ -12,6 +12,10 @@
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"
     />
+
+    <link href="
+https://cdn.jsdelivr.net/npm/material-icons@1.13.12/iconfont/material-icons.min.css
+" rel="stylesheet">
 </svelte:head>
 <main>
     <div class="backround"></div>
@@ -224,7 +228,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 1.5rem;
-        justify-content: center; /* Középre igazítás */
+        justify-content: center;
         padding: 2rem;
     }
 
@@ -284,13 +288,13 @@
 
     @media (max-width: 768px) {
         .translation-card {
-            flex: 1 1 calc(50% - 1.5rem); /* 2 oszlop kisebb képernyőn */
+            flex: 1 1 calc(50% - 1.5rem);
         }
     }
 
     @media (max-width: 480px) {
         .translation-card {
-            flex: 1 1 100%; /* 1 oszlop mobilon */
+            flex: 1 1 100%;
         }
     }
 
@@ -317,7 +321,6 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     }
 
-    /* Icon section */
     .info-icon {
         font-size: 2rem;
         color: var(--secondary, green);
@@ -327,7 +330,6 @@
         flex-shrink: 0;
     }
 
-    /* Text content */
     .info-text {
         flex: 1;
         color: rgba(255, 255, 255, 0.8);
@@ -339,7 +341,6 @@
         color: var(--primary, white);
     }
 
-    /* Action button */
     .info-actions .buy-button {
         display: flex;
         align-items: center;

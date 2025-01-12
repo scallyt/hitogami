@@ -3,3 +3,5 @@
 - Text bubble tensoreflow
 - trjs
 - i18n
+- Fix ha be vagy jelentkezve ne legyen bejelentkezés hanem dashboard
+- Collection rendszer
