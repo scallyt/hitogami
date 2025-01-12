@@ -9,7 +9,14 @@ declare global {
 			user: User | null;
 			session: Session | null;
 		}
+		interface PageData {
+			flash?: {
+				type: "success" | "error";
+				message: string
+			};
+		}
 	}
 }
 
+// biome-ignore lint/complexity/noUselessEmptyExport: <explanation>
 export {};

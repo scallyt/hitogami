@@ -5,3 +5,4 @@
 - i18n
 - Fix ha be vagy jelentkezve ne legyen bejelentkezés hanem dashboard
 - Collection rendszer
+- Flash message css
