@@ -1,3 +1,5 @@
+# This project has been archived due to a development error / lack of time. It may be resumed later however it is not in the near future
+
 # Hitagomi created by [scallyt](https://github.com/scallyt)
 
 What is hitagomi?
